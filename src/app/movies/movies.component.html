@@ -25,8 +25,13 @@
 
 <div class="row">
     <div class="column" *ngFor="let movie of movies">
-        <div class="card">
-            <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>  
+        <div class="card ownlisting">
+            <div class="overlay">
+                <div class="hover playnow-button">
+                    <i class="material-icons">play_arrow</i>
+                    PLAY NOW
+                </div>
+            </div>
                 <img *ngIf="movie" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{movie?.poster_path}}"
                 [alt]="movie.title ? movie.title : movie.name">
                 <img *ngIf="!movie?.poster_path" src="assets/images/default-movie.png"
