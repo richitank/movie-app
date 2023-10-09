@@ -26,8 +26,7 @@ export class MovieService {
             'Authorization': `Bearer ${this.bearerToken}`,
             'X-API-Key': this.apiKey,
             'Content-Type': 'application/json', 
-        });
-        page = 1;
+        });   
         const options = {headers: headers};
         //return this.http.get(`${this.baseUrl}movie/now_playing?language=${this.language}&page=${page}`, options);
         return this.http.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);

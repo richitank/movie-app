@@ -42,3 +42,9 @@
         </div>
     </div>
 </div>
+
+<mat-paginator [length]=totalResults 
+               [pageSize]="20"      
+               (page)="onPageChange($event)"
+               aria-label="Select page">
+</mat-paginator>

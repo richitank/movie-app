@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MovieService } from '../services/movies.service';
 import { Subscription, delay } from 'rxjs';
 import { Movie } from './movie.model';
 import { MoviesList } from './moviesList.model';
+import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-movies',
@@ -12,7 +13,7 @@ import { MoviesList } from './moviesList.model';
 
 export class MoviesComponent implements OnInit {
   movies: Movie [] = []
-  subscription: Subscription | undefined;
+  subscription: Subscription | any;
   data: any;
   topRated: any;
   responsiveOptions: any;
@@ -21,28 +22,38 @@ export class MoviesComponent implements OnInit {
   total_results: any;
   searchRes: any;
   searchStr: any;
+  pageNumber: number = 1;
 
   constructor(private movieService: MovieService) { }
 
-
   ngOnInit(): void {
-    // this.subscription = this.movieService.getListOfNowPlayingMovies(1).
-    // subscribe(
-    //   (res: any) => {
-    //     this.movies = res.Results;
-    //   }
-    //   )
-    this.getListOfNowPlayingMovies(1);
+    this.getListOfNowPlayingMovies(this.pageNumber);
+  }
+  
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  onPageChange(event: PageEvent) {
+    this.loader = true,
+    this.getListOfNowPlayingMovies(event.pageIndex+1);
   }
 
   getListOfNowPlayingMovies(page: number) {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
     //Call the service
-      //this.movieService.getListOfNowPlayingMovies(page).pipe(delay(2000)).subscribe((movies: Movie[]) => {
-      this.movieService.getListOfNowPlayingMovies(page).subscribe((res: MoviesList) => {
-      this.movies = res.results;
-      console.log (this.movies)
-      //this.topRated = res.results;
-      //this.totalResults = res.total_results;
-      this.loader = false;
-  })
-}}
+      this.subscription = this.movieService.getListOfNowPlayingMovies(page).subscribe((res: MoviesList) => {
+        this.movies = res.results;
+        this.totalResults = res.total_results;
+        this.pageNumber = page;
+        console.log('current page number: ' + (this.pageNumber));
+        this.loader = false;
+  }
+  )
+  }
+
+
+
+}
