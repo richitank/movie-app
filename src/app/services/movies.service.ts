@@ -5,8 +5,8 @@ import { Observable } from "rxjs";
 @Injectable({
     providedIn: 'root'
   })
-export class MovieService {
 
+export class MovieService {
     apiKey: string;
     baseUrl: string;
     region: string;
@@ -28,7 +28,10 @@ export class MovieService {
             'Content-Type': 'application/json', 
         });   
         const options = {headers: headers};
-        //return this.http.get(`${this.baseUrl}movie/now_playing?language=${this.language}&page=${page}`, options);
         return this.http.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
     }
+
+    searchMovies(searchStr: string): Observable<any> {
+        return this.http.get(`${this.baseUrl}search/movie?api_key=${this.apiKey}&query=${searchStr}`);
+      }
 }

@@ -14,7 +14,4 @@ export class MoviesList {
         this.total_pages = total_pages;
         this.total_results = total_results;
     }
-
-
-
 }

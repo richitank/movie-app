@@ -5,6 +5,7 @@ import { Movie } from './movie.model';
 import { MoviesList } from './moviesList.model';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
+
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -21,8 +22,8 @@ export class MoviesComponent implements OnInit {
   totalResults: any;
   total_results: any;
   searchRes: any;
-  searchStr: any;
   pageNumber: number = 1;
+  searchTerm: string = '';
 
   constructor(private movieService: MovieService) { }
 
@@ -50,10 +51,15 @@ export class MoviesComponent implements OnInit {
         this.pageNumber = page;
         console.log('current page number: ' + (this.pageNumber));
         this.loader = false;
-  }
-  )
+      }) 
   }
 
-
+  searchMovies(searchStr: string) {
+    console.log(searchStr)
+    this.movieService.searchMovies(searchStr).subscribe((res: MoviesList) => {
+      this.searchRes = res.results;
+      console.log(this.searchRes)
+    })
+  }
 
 }
