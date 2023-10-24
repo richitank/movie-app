@@ -16,14 +16,17 @@ import { HeaderComponent } from './shared/header/header.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { ShowsComponent } from './shows/shows.component';
-import { MatNavList } from '@angular/material/list';
 import { MatListModule } from '@angular/material/list';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MovieDetailsComponent } from './details/movie-details/movie-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/movies', pathMatch: 'full'},
-  { path: 'movies', component: MoviesComponent },
+  { path: 'movies', component: MoviesComponent, children: [
+    {path: ':id', component: MovieDetailsComponent}
+  ]},
   { path: 'shows', component: ShowsComponent },
+  //{ path: 'movieDetails', component: MovieDetailsComponent },
 ]
 
 @NgModule({
@@ -31,7 +34,8 @@ const routes: Routes = [
     AppComponent,
     MoviesComponent,
     HeaderComponent,
-    ShowsComponent
+    ShowsComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule,

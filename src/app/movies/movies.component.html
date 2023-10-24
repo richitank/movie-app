@@ -6,8 +6,8 @@
 
 <div class="row" *ngIf="searchRes">
     <div class="column" *ngFor="let movie of searchRes">
-        <div class="card ownlisting">
-            <div class="overlay">
+        <div class="card ownlisting" routerLink="['/movieDetails/', movie.id]">
+            <div class="overlay" >
                 <div class="hover playnow-button">
                     <i class="material-icons">play_arrow</i>
                     PLAY NOW
