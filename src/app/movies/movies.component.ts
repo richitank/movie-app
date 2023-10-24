@@ -5,7 +5,6 @@ import { Movie } from './movie.model';
 import { MoviesList } from './moviesList.model';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 
-
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
@@ -55,7 +54,6 @@ export class MoviesComponent implements OnInit {
   }
 
   searchMovies(searchStr: string) {
-    console.log(searchStr)
     this.movieService.searchMovies(searchStr).subscribe((res: MoviesList) => {
       this.searchRes = res.results;
       console.log(this.searchRes)

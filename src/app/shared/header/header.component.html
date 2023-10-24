@@ -1,0 +1,29 @@
+<mat-toolbar>
+    <!-- <button mat-icon-button >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-toolbar-row>
+        <span class="spacer"></span>
+        <mat-icon (click)="toggleSidenav()">menu</mat-icon>
+      </mat-toolbar-row> -->
+    <span class="navbar-brand">
+        <a class="navbar-brand" id="Title" [routerLink]="['/']">ZoloMovies</a>
+    </span>
+    <span class="nav-item" style="margin-left:10px;">  
+        <a class="nav-link" [routerLink]="['/movies']">Movies</a>     
+    </span>
+    <span class="nav-item" style="margin-left:10px;">  
+        <a class="nav-link" [routerLink]="['/shows']">Shows</a>     
+    </span>
+</mat-toolbar>
+
+<!-- <mat-sidenav-container>
+    <mat-sidenav #sidenav mode="over" opened="true">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/">Home</a>
+        <a mat-list-item routerLink="/movies">About</a>
+        <a mat-list-item routerLink="/shows">Contact</a>
+      </mat-nav-list>
+    </mat-sidenav>
+  </mat-sidenav-container> -->
+  

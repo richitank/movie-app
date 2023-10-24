@@ -1,47 +1,8 @@
-<!-- <h1>Welcome to movies!</h1>
-<div class="listing">
-    <ng-container *ngIf="movies">
-        <div class="row">
-            <div class="col-md-2 listing__items" *ngFor="let movie of movies | slice:0:18">
-                <div>
-                    <div class="listing-item-style">
-                        <div class="overlay">
-                            <div class="hover"><i class="material-icons">play_arrow</i> PLAY NOW</div>
-                        </div>
-                        <img *ngIf="movie" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{movie?.poster_path}}"
-                            [alt]="movie.title ? movie.title : movie.name">
-                        <img *ngIf="!movie?.poster_path" src="assets/images/default-movie.png"
-                            [alt]="movie.title ? movie.title : movie.name">
-                        <h6>{{ movie?.title }}</h6>
-                        <p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p>
-                        <p class="year"><span>{{movie?.release_date | date: 'yyyy'}}</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </ng-container>
-</div> -->
-<!-- <form>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <div class="input-group">
-                    <input type="text" class="form-control searchdesign" placeholder="Search..." [(ngModel)]="searchTerm"
-                        name="searchStr" (keyup.enter)="searchMovies(searchTerm)">
-                    <span class="input-group-btn">
-                        <button class="btn btn-primary btnDesign" type="button" (click)="searchMovies(searchTerm)">Go!</button>
-                    </span>
-                </div>
-            </div>
-        </div>
-    </div>    
-</form> -->
-
 <mat-form-field appearance="outline" style="padding-top:10px; padding-left:20px;" >
     <input matInput [(ngModel)]="searchTerm" placeholder="Search" (keyup.enter)="searchMovies(searchTerm)">
     <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>  &nbsp;&nbsp;
-<button mat-raised-button color="primary" (click)="searchMovies(searchTerm)">Search</button>
+<button mat-raised-button style="background-color: #4678dc; color: white;"  (click)="searchMovies(searchTerm)">Search</button>
 
 <div class="row" *ngIf="searchRes">
     <div class="column" *ngFor="let movie of searchRes">
@@ -62,6 +23,7 @@
         </div>
     </div>
 </div>
+
 
 <div class="row" *ngIf="movies">
     <div class="column" *ngFor="let movie of movies">
