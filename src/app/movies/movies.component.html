@@ -6,42 +6,46 @@
 
 <div class="row" *ngIf="searchRes">
     <div class="column" *ngFor="let movie of searchRes">
-        <div class="card ownlisting" routerLink="['/movieDetails/', movie.id]">
-            <div class="overlay" >
-                <div class="hover playnow-button">
-                    <i class="material-icons">play_arrow</i>
-                    PLAY NOW
+        <div [routerLink]="['/movies/', movie.id ]">
+            <div class="card ownlisting">
+                <div class="overlay">
+                    <div class="hover playnow-button">
+                        <i class="material-icons">play_arrow</i>
+                        PLAY NOW       
+                    </div>
                 </div>
-            </div>
-            <img *ngIf="movie" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{movie?.poster_path}}"
-            [alt]="movie.title ? movie.title : movie.name">
-            <img *ngIf="!movie?.poster_path" src="/assets/images/cover_image.jpg"
-                [alt]="movie.title ? movie.title : movie.name">   
-            <h6>{{ movie?.title }}</h6>
-            <p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p>
-            <p class="year"><span>{{movie?.release_date | date: 'yyyy'}}</span></p>
-        </div>
-    </div>
-</div>
-
-
-<div class="row" *ngIf="movies">
-    <div class="column" *ngFor="let movie of movies">
-        <div class="card ownlisting">
-            <div class="overlay">
-                <div class="hover playnow-button">
-                    <i class="material-icons">play_arrow</i>
-                    PLAY NOW
-                </div>
-            </div>
                 <img *ngIf="movie" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{movie?.poster_path}}"
                 [alt]="movie.title ? movie.title : movie.name">
                 <img *ngIf="!movie?.poster_path" src="/assets/images/cover_image.jpg"
                     [alt]="movie.title ? movie.title : movie.name">   
                 <h6>{{ movie?.title }}</h6>
                 <p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p>
-                <p class="year"><span>{{movie?.release_date | date: 'yyyy'}}</span></p>
-        </div>
+                <p class="year"><span>{{movie?.release_date | date: 'yyyy'}}</span></p>   
+            </div>
+        </div>     
+    </div>
+</div>
+
+
+<div class="row" *ngIf="movies">
+    <div class="column" *ngFor="let movie of movies">
+        <div [routerLink]="['/movies', movie.id]">
+            <div class="card ownlisting">
+                <div class="overlay">
+                    <div class="hover playnow-button">
+                        <i class="material-icons">play_arrow</i>
+                        PLAY NOW
+                    </div>
+                </div>
+                    <img *ngIf="movie" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{movie?.poster_path}}"
+                    [alt]="movie.title ? movie.title : movie.name">
+                    <img *ngIf="!movie?.poster_path" src="/assets/images/cover_image.jpg"
+                        [alt]="movie.title ? movie.title : movie.name">   
+                    <h6>{{ movie?.title }}</h6>
+                    <p class="rate"><i class="material-icons">star</i><span>{{movie?.vote_average}}</span> /10</p>
+                    <p class="year"><span>{{movie?.release_date | date: 'yyyy'}}</span></p>
+            </div>
+        </div>  
     </div>
 </div>
 <mat-paginator [length]=totalResults 

@@ -20,10 +20,10 @@ export class MovieDetailsComponent implements OnInit{
     constructor (private movieService: MovieService, private route: ActivatedRoute, private router: Router) {}
 
 
-    ngOnInit(): void {
+    ngOnInit() {
+        console.log("details got triggered")
         this.route.params.subscribe((params : Params) => {
             this.id = params['id'];
-            console.log("We are here")
             this.getMovieDetails(this.id);
         })
     }
@@ -31,7 +31,6 @@ export class MovieDetailsComponent implements OnInit{
     getMovieDetails(id: number){
         this.movieService.getMovieDetails(id).subscribe((result: MovieDetails) => {
             this.movie = result;
-            console.log("This is called for movie datils id: "+ id);
         })
     }
 

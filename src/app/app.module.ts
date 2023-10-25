@@ -19,15 +19,17 @@ import { ShowsComponent } from './shows/shows.component';
 import { MatListModule } from '@angular/material/list';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieDetailsComponent } from './details/movie-details/movie-details.component';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/movies', pathMatch: 'full'},
-  { path: 'movies', component: MoviesComponent, children: [
-    {path: ':id', component: MovieDetailsComponent}
-  ]},
-  { path: 'shows', component: ShowsComponent },
+//const routes: Routes = [
+  // { path: '', redirectTo: '/movies', pathMatch: 'full'},
+  // { path: 'movies', component: MoviesComponent, children: [
+  //   {path: ':id', component: MovieDetailsComponent},
+  //   //{path: '', component: MovieDetailsComponent}
+  // ]},
+  // { path: 'shows', component: ShowsComponent },
   //{ path: 'movieDetails', component: MovieDetailsComponent },
-]
+//]
 
 @NgModule({
   declarations: [
@@ -48,7 +50,7 @@ const routes: Routes = [
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    RouterModule.forRoot(routes),
+    AppRoutingModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
