@@ -22,13 +22,8 @@ export class MovieService {
     }    
 
     getListOfNowPlayingMovies(page: number): Observable<any> {
-        const headers = new HttpHeaders ({
-            'Authorization': `Bearer ${this.bearerToken}`,
-            'X-API-Key': this.apiKey,
-            'Content-Type': 'application/json', 
-        });   
-        const options = {headers: headers};
-        return this.http.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
+        //There is something going on with now_playing movies today
+        return this.http.get(`${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
     }
 
     searchMovies(searchStr: string): Observable<any> {
