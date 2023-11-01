@@ -1,6 +1,8 @@
 # RateAndReview
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+The purpose of this project is to learn Angular.
+This project uses TMDB API to get data regarding movies and shows and displays them using Angular. It also uses the FlixMovies application as a reference.
 
 ## Development server
 
