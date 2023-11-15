@@ -2,3 +2,9 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@import '../src/assets/scss/hero.scss';
+@import '../src/assets/scss/overview.scss';
+@import '../src/assets/scss/videos.scss';
+@import '../src/assets/scss/images.scss';
+@import '../src/assets/scss/variables.scss';

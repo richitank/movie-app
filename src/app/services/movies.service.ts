@@ -23,7 +23,7 @@ export class MovieService {
 
     getListOfNowPlayingMovies(page: number): Observable<any> {
         //There is something going on with now_playing movies today
-        return this.http.get(`${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
+        return this.http.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
     }
 
     searchMovies(searchStr: string): Observable<any> {
@@ -31,6 +31,14 @@ export class MovieService {
     }
 
     getMovieDetails(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}movie/${id}?api_key=${this.apiKey}`);
+        return this.http.get(`${this.baseUrl}movie/${id}?api_key=${this.apiKey}`);
+    }
+
+    getMovieVideos(id: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}movie/${id}/videos?api_key=${this.apiKey}`);
+    }
+
+    getBackdropsImages(id: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}movie/${id}/images?api_key=${this.apiKey}`);
     }
 }
