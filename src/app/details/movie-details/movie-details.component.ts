@@ -28,7 +28,6 @@ export class MovieDetailsComponent implements OnInit{
 
 
     ngOnInit() {
-        console.log("details got triggered")
         this.route.params.subscribe((params : Params) => {
             this.id = params['id'];
             this.getMovieDetails(this.id);
@@ -56,6 +55,6 @@ export class MovieDetailsComponent implements OnInit{
         this.movieService.getBackdropsImages(id).subscribe((res: MovieImage) => {
           this.backdrops = res.backdrops;
         });
-      }
+    }
 
 }

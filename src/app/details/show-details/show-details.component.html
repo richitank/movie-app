@@ -1,0 +1,147 @@
+<div class="hero">
+    <div class="backdrop">
+        <div class="lazyloaded">
+            <img class="lazyload image" src="https://image.tmdb.org/t/p/original/{{ show?.backdrop_path }}">
+        </div>
+    </div>
+    <div class="pane">
+        <div>
+            <div class="name">{{ show?.name }}</div>
+            <div class="meta">
+                <div class="info">
+                    <span class="rate">
+                        <i class="material-icons">star</i><span>{{ show?.vote_average }}</span> /10
+                    </span>
+                    <span> {{show?.vote_count  }} Reviews</span>
+                    <span>{{show?.first_air_date | date: 'yyyy' }}</span>
+                    <span>{{show?.episode_run_time   }}</span>
+                </div>
+            </div>
+            <div class="desc">{{ show?.overview }}</div>
+            <button type="button" class="button button--icon trailer" >
+                <span class="mr-2"><img src=""></span>
+                <span class="txt">Watch Trailer</span>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-tab-group class="mt-5 mb-5" mat-align-tabs="center" animationDuration="0ms">
+                <mat-tab label="Overview">
+                    <div class="listing-space info__movies">
+                        <div class="left">
+                            <div class="poster">
+                                <img src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{ show?.poster_path }}">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="overview">
+                                <h2 class="title">Storyline</h2>
+                                <div>{{show?.overview}}</div>
+                            </div>
+                            <div class="stats">
+                                <ul class="nolist">
+                                    <li>
+                                        <div class="label">
+                                            Released
+                                        </div>
+                                        <div class="value">
+                                            {{ show?.first_air_date }}
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="label">
+                                            Runtime
+                                        </div>
+                                        <div class="value">
+                                            {{ show?.runtime  }}
+                                        </div>
+                                    </li>
+                                    <li *ngIf="show?.budget">
+                                        <div class="label">
+                                            Budget
+                                        </div>
+                                        <div class="value">
+                                            ${{ show?.budget }}
+                                        </div>
+                                    </li>
+                                    <li *ngIf="show?.revenue">
+                                        <div class="label">
+                                            Revenue
+                                        </div>
+                                        <div class="value">
+                                            ${{ show?.revenue }}
+                                        </div>
+                                    </li>
+
+                                    <li *ngIf="show?.genres.length">
+                                        <div class="label">
+                                            Genre
+                                        </div>
+                                        <div class="comma_" *ngFor="let genre of show?.genres">
+                                            {{ genre?.name }}
+                                        </div>
+                                    </li>
+                                    <li *ngIf="show?.status">
+                                        <div class="label">
+                                            Status
+                                        </div>
+                                        <div class="value">
+                                            {{show?.status}}
+                                        </div>
+                                    </li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+                    </div>  
+                 </mat-tab>
+                 <mat-tab label="Videos">
+                    <div class="listing-space videos__status">
+                        <div class="items">
+                            <div class="item" *ngFor="let list of relatedvideo">
+                                <div  class="link">
+                                    <div class="image lazyloaded">
+                                        <img class="lazyload"
+                                            src="https://img.youtube.com/vi/{{list?.key}}/mqdefault.jpg">
+                                        <div class="play__icon">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
+                                                viewBox="0 0 55 55">
+                                                <circle cx="27.5" cy="27.5" r="26.75" fill="none" stroke="#fff"
+                                                    stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" />
+                                                <path fill="none" stroke="#fff" stroke-linecap="round"
+                                                    stroke-linejoin="round" stroke-width="1.5"
+                                                    d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                    <div class="name">
+                                        {{list?.name}}
+                                    </div>
+                                    <div class="type">
+                                        {{list?.type}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Photos">
+                    <div class="listing-space backdrop_">
+                        <div class="head">
+                            <h2 class="title">Backdrops</h2>
+                        </div>
+                        <div class="items">
+                            <div class="item backdrop_" *ngFor="let backdrop of backdrops | slice: 1:17">
+                                <div class="image">
+                                    <img class="lazyload" src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/{{ backdrop?.file_path }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-tab>
+         </mat-tab-group>
+    <div>
+</div>

@@ -28,4 +28,16 @@ export class ShowService {
     searchTvShows(searchStr: string): Observable<any> {
         return this.http.get(`${this.baseUrl}search/tv?api_key=${this.apiKey}&query=${searchStr}`);
     }
+
+    getShowDetails(id: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}tv/${id}?api_key=${this.apiKey}`);
+    }
+
+    getShowVideos(id: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}tv/${id}/videos?api_key=${this.apiKey}`);
+    }
+
+    getBackdropsImages(id: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}tv/${id}/images?api_key=${this.apiKey}`);
+    }
 }
