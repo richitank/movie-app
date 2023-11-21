@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { MatSidenav } from '@angular/material/sidenav';
+import { SharedService } from 'src/app/services/shared.service';
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -10,6 +10,11 @@ import { MatSidenav } from '@angular/material/sidenav';
 export class HeaderComponent {
   isSidenavOpen = false;
 
+  constructor (private sharedService: SharedService) {}
+
+  updateOption(option: string){
+    this.sharedService.updateSelectedOption(option);
+  }
   // Function to toggle the side navigation menu
   toggleSidenav() {
     this.isSidenavOpen = !this.isSidenavOpen;

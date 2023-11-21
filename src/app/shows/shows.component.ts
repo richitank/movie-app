@@ -4,6 +4,7 @@ import { ShowService } from '../services/show.service';
 import { Subscription } from 'rxjs';
 import { ShowList } from './showList.model';
 import { PageEvent } from '@angular/material/paginator';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-shows',
@@ -19,10 +20,22 @@ export class ShowsComponent implements OnInit, OnDestroy {
   searchTerm: string = '';
   loader = true;
 
-  constructor(private showService: ShowService) { }
+  constructor(private showService: ShowService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.getListOfTopRatedTvShows(this.pageNumber);
+    this.sharedService.selectedOption.subscribe((selectedOption)=> {
+      this.loadShows(selectedOption);
+    })
+    //this.getListOfTopRatedTvShows(this.pageNumber);
+  }
+
+  loadShows(selectedOption: string) {
+    if(selectedOption === 'topRated'){
+      this.getListOfTopRatedTvShows(this.pageNumber);
+    }
+    else if(selectedOption === 'latest'){
+      this.getListOfNowPlayingTvShows(this.pageNumber);
+    }
   }
 
   ngOnDestroy(): void {
@@ -39,6 +52,18 @@ export class ShowsComponent implements OnInit, OnDestroy {
       this.subscription.unsubscribe();
     }
     this.subscription = this.showService.getListOfTopRatedTvShows(page).subscribe((res: ShowList) => {
+      this.shows = res.results;
+      this.totalResults = res.total_results;
+      this.pageNumber = page;
+      this.loader = false;
+    })
+  }
+
+  getListOfNowPlayingTvShows(page: number) {
+    if(this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    this.subscription = this.showService.getListOfNowPlayingTvShows(page).subscribe((res: ShowList) => {
       this.shows = res.results;
       this.totalResults = res.total_results;
       this.pageNumber = page;

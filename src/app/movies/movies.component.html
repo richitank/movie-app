@@ -2,7 +2,7 @@
     <input matInput [(ngModel)]="searchTerm" placeholder="Search" (keyup.enter)="searchMovies(searchTerm)">
     <mat-icon matSuffix>search</mat-icon>
 </mat-form-field>  &nbsp;&nbsp;
-<button mat-raised-button style="background-color: #4678dc; color: white;"  (click)="searchMovies(searchTerm)">Search</button>
+<button mat-raised-button style="background-color: #4678dc; color: white;" (click)="searchMovies(searchTerm)">Search</button>
 
 <div class="row" *ngIf="searchRes">
     <div class="column" *ngFor="let movie of searchRes">
@@ -25,7 +25,6 @@
         </div>     
     </div>
 </div>
-
 
 <div class="row" *ngIf="movies">
     <div class="column" *ngFor="let movie of movies">

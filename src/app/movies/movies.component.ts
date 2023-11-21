@@ -4,6 +4,7 @@ import { Subscription, delay } from 'rxjs';
 import { Movie } from './movie.model';
 import { MoviesList } from './moviesList.model';
 import {MatPaginatorModule, PageEvent} from '@angular/material/paginator';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-movies',
@@ -24,10 +25,22 @@ export class MoviesComponent implements OnInit {
   pageNumber: number = 1;
   searchTerm: string = '';
 
-  constructor(private movieService: MovieService) { }
+  constructor(private movieService: MovieService, private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.getListOfNowPlayingMovies(this.pageNumber);
+    this.sharedService.selectedOption.subscribe((selectedOption)=> {
+      this.loadMovies(selectedOption);
+    })
+    //this.getListOfNowPlayingMovies(this.pageNumber);
+  }
+
+  loadMovies(selectedOption: string) {
+    if(selectedOption === 'topRated'){
+      this.getListOfTopRatedMovies(this.pageNumber);
+    }
+    else if(selectedOption === 'latest'){
+      this.getListOfNowPlayingMovies(this.pageNumber);
+    }
   }
   
   ngOnDestroy() {
@@ -45,6 +58,20 @@ export class MoviesComponent implements OnInit {
     }
     //Call the service
       this.subscription = this.movieService.getListOfNowPlayingMovies(page).subscribe((res: MoviesList) => {
+        this.movies = res.results;
+        this.totalResults = res.total_results;
+        this.pageNumber = page;
+        console.log('current page number: ' + (this.pageNumber));
+        this.loader = false;
+      }) 
+  }
+
+  getListOfTopRatedMovies(page: number){
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    //Call the service
+      this.subscription = this.movieService.getListOfTopRatedMovies(page).subscribe((res: MoviesList) => {
         this.movies = res.results;
         this.totalResults = res.total_results;
         this.pageNumber = page;

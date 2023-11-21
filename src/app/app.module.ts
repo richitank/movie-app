@@ -22,7 +22,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieDetailsComponent } from './details/movie-details/movie-details.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ShowDetailsComponent } from './details/show-details/show-details.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 //const routes: Routes = [
   // { path: '', redirectTo: '/movies', pathMatch: 'full'},
   // { path: 'movies', component: MoviesComponent, children: [
@@ -58,7 +58,9 @@ import { ShowDetailsComponent } from './details/show-details/show-details.compon
     MatToolbarModule,
     MatListModule,
     NgbModule,
-    MatTabsModule
+    MatTabsModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   providers: [],
   bootstrap: [AppComponent]

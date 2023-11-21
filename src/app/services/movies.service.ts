@@ -26,6 +26,10 @@ export class MovieService {
         return this.http.get(`${this.baseUrl}movie/now_playing?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
     }
 
+    getListOfTopRatedMovies(page: number): Observable<any> {
+        //There is something going on with now_playing movies today
+        return this.http.get(`${this.baseUrl}movie/top_rated?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
+    }
     searchMovies(searchStr: string): Observable<any> {
         return this.http.get(`${this.baseUrl}search/movie?api_key=${this.apiKey}&query=${searchStr}`);
     }

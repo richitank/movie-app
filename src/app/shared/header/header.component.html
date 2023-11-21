@@ -15,7 +15,28 @@
     <span class="nav-item" style="margin-left:10px;">  
         <a class="nav-link" [routerLink]="['/shows']">Shows</a>     
     </span>
+
+    <div>
+      <button mat-button [matMenuTriggerFor]="menu">MoviesNew</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/movies']" (click)="updateOption('topRated')">Top Rated</button>
+        <button mat-menu-item [routerLink]="['/movies']" (click)="updateOption('latest')">Latest</button>
+      </mat-menu>
+    </div>
+
+    <div>
+      <button mat-button [matMenuTriggerFor]="showsMenu">ShowsNew</button>
+      <mat-menu #showsMenu="matMenu">
+        <button mat-menu-item [routerLink]="['/shows']" (click)="updateOption('topRated')">Top Rated</button>
+        <button mat-menu-item [routerLink]="['/shows']" (click)="updateOption('latest')">Latest</button>
+      </mat-menu>
+    </div>
 </mat-toolbar>
+<!-- <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
+<mat-menu #afterMenu="matMenu" xPosition="after">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu> -->
 
 <!-- <mat-sidenav-container>
     <mat-sidenav #sidenav mode="over" opened="true">

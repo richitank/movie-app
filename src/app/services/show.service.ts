@@ -25,6 +25,9 @@ export class ShowService {
         return this.http.get(`${this.baseUrl}tv/top_rated?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
     }
 
+    getListOfNowPlayingTvShows(page: number): Observable<any> {
+        return this.http.get(`${this.baseUrl}tv/on_the_air?api_key=${this.apiKey}&page=${page}&language=${this.language}&region=${this.region}`);
+    }
     searchTvShows(searchStr: string): Observable<any> {
         return this.http.get(`${this.baseUrl}search/tv?api_key=${this.apiKey}&query=${searchStr}`);
     }
