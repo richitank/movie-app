@@ -24,6 +24,7 @@ export class MoviesComponent implements OnInit {
   searchRes: any;
   pageNumber: number = 1;
   searchTerm: string = '';
+  selectedOption: string = 'topRated';
 
   constructor(private movieService: MovieService, private sharedService: SharedService) { }
 
@@ -35,6 +36,7 @@ export class MoviesComponent implements OnInit {
   }
 
   loadMovies(selectedOption: string) {
+    this.selectedOption = selectedOption;
     if(selectedOption === 'topRated'){
       this.getListOfTopRatedMovies(this.pageNumber);
     }
@@ -48,8 +50,32 @@ export class MoviesComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent) {
-    this.loader = true,
-    this.getListOfNowPlayingMovies(event.pageIndex+1);
+    this.loader = true;
+    this.getList(event.pageIndex + 1);
+    // if(this.selectedOption === 'topRated') {
+    //   this.getListOfTopRatedMovies(event.pageIndex+1);
+    // }
+    // else if(this.selectedOption === 'lates'){
+    //   this.getListOfNowPlayingMovies(event.pageIndex+1);
+    // }
+  }
+
+  updateMethod(method: string, page: number){
+    this.selectedOption = method;
+    this.getList(page);
+  }
+
+  getList(page: number){
+    switch(this.selectedOption){
+      case 'topRated':
+        this.getListOfTopRatedMovies(page);
+        break;
+      case 'latest':
+        this.getListOfNowPlayingMovies(page);
+        break;
+      default:
+        this.getListOfTopRatedMovies(page);
+    }
   }
 
   getListOfNowPlayingMovies(page: number) {
