@@ -6,24 +6,25 @@
 
 <div class="row" *ngIf="searchRes">
     <div class="column" *ngFor="let show of searchRes">
-        <div class="card ownlisting">
-            <div class="overlay">
-                <div class="hover playnow-button">
-                    <i class="material-icons">play_arrow</i>
-                    PLAY NOW
+        <div [routerLink]="['/shows', show.id]">
+            <div class="card ownlisting">
+                <div class="overlay">
+                    <div class="hover playnow-button">
+                        <i class="material-icons">play_arrow</i>
+                        PLAY NOW
+                    </div>
                 </div>
+                    <img *ngIf="show" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{show?.poster_path}}"
+                    [alt]="show.title ? show.title : show.name">
+                    <img *ngIf="!show?.poster_path" src="/assets/images/cover_image.jpg"
+                        [alt]="show.title ? show.title : show.name">   
+                    <h6>{{ show?.title }}</h6>
+                    <p class="rate"><i class="material-icons">star</i><span>{{show?.vote_average}}</span> /10</p>
+                    <p class="year"><span>{{show?.release_date | date: 'yyyy'}}</span></p>
             </div>
-            <img *ngIf="show" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{show?.poster_path}}"
-            [alt]="show.title ? show.title : show.name">
-            <img *ngIf="!show?.poster_path" src="/assets/images/cover_image.jpg"
-                [alt]="show.title ? show.title : show.name">   
-            <h6>{{ show?.title }}</h6>
-            <p class="rate"><i class="material-icons">star</i><span>{{show?.vote_average}}</span> /10</p>
-            <p class="year"><span>{{show?.release_date | date: 'yyyy'}}</span></p>
         </div>
     </div>
 </div>
-
 
 <div class="row" *ngIf="shows">
     <div class="column" *ngFor="let show of shows">

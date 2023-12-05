@@ -9,28 +9,31 @@
     <span class="navbar-brand">
         <a class="navbar-brand" id="Title" [routerLink]="['/']">ZoloMovies</a>
     </span>
-    <span class="nav-item" style="margin-left:10px;">  
+    <!-- <span class="nav-item" style="margin-left:10px;">  
         <a class="nav-link" [routerLink]="['/movies']">Movies</a>     
     </span>
     <span class="nav-item" style="margin-left:10px;">  
         <a class="nav-link" [routerLink]="['/shows']">Shows</a>     
-    </span>
+    </span> -->
 
-    <div>
-      <button mat-button [matMenuTriggerFor]="menu">MoviesNew</button>
+    
+      <span class="nav-item" style="margin-left: 10px;">  
+          <a  [matMenuTriggerFor]="menu" class="nav-link">Movies</a>     
+      </span>
+      <!-- <button mat-button [matMenuTriggerFor]="menu" class="nav-link">MoviesNew</button> -->
       <mat-menu #menu="matMenu">
         <button mat-menu-item [routerLink]="['/movies']" (click)="updateOption('topRated')">Top Rated</button>
         <button mat-menu-item [routerLink]="['/movies']" (click)="updateOption('latest')">Latest</button>
       </mat-menu>
-    </div>
-
-    <div>
-      <button mat-button [matMenuTriggerFor]="showsMenu">ShowsNew</button>
+      <span class="nav-item" style="margin-left: 10px;">  
+        <a class="nav-link" [matMenuTriggerFor]="showsMenu">Shows</a>     
+      </span>
+      <!-- <button mat-button [matMenuTriggerFor]="showsMenu" class="navbar-brand">ShowsNew</button> -->
       <mat-menu #showsMenu="matMenu">
         <button mat-menu-item [routerLink]="['/shows']" (click)="updateOption('topRated')">Top Rated</button>
-        <button mat-menu-item [routerLink]="['/shows']" (click)="updateOption('latest')">Latest</button>
+        <button mat-menu-item [routerLink]="['/shows']" (click)="updateOption('latest')">On Air</button>
       </mat-menu>
-    </div>
+    
 </mat-toolbar>
 <!-- <button mat-button [matMenuTriggerFor]="afterMenu">After</button>
 <mat-menu #afterMenu="matMenu" xPosition="after">

@@ -19,6 +19,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
   subscription: Subscription | any;
   searchTerm: string = '';
   loader = true;
+  selectedOption: string = 'topRated';
 
   constructor(private showService: ShowService, private sharedService: SharedService) { }
 
@@ -30,6 +31,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
   }
 
   loadShows(selectedOption: string) {
+    this.selectedOption = selectedOption;
     if(selectedOption === 'topRated'){
       this.getListOfTopRatedTvShows(this.pageNumber);
     }
@@ -43,8 +45,27 @@ export class ShowsComponent implements OnInit, OnDestroy {
   }
 
   onPageChange(event: PageEvent){
-    this.loader = true,
-    this.getListOfTopRatedTvShows(event.pageIndex+1);
+    this.loader = true;
+    this.getList(event.pageIndex + 1);
+    //this.getListOfTopRatedTvShows(event.pageIndex+1);
+  }
+
+  updateMethod(method: string, page: number){
+    this.selectedOption = method;
+    this.getList(page);
+  }
+
+  getList(page: number){
+    switch(this.selectedOption){
+      case 'topRated':
+        this.getListOfTopRatedTvShows(page);
+        break;
+      case 'latest':
+        this.getListOfNowPlayingTvShows(page);
+        break;
+      default:
+        this.getListOfTopRatedTvShows(page);
+    }
   }
 
   getListOfTopRatedTvShows(page: number) {
