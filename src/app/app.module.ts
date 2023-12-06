@@ -23,6 +23,8 @@ import { MovieDetailsComponent } from './details/movie-details/movie-details.com
 import { AppRoutingModule } from './app-routing.module';
 import { ShowDetailsComponent } from './details/show-details/show-details.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { HomeComponent } from './home/home.component';
+import { FooterComponent } from './shared/footer/footer.component';
 //const routes: Routes = [
   // { path: '', redirectTo: '/movies', pathMatch: 'full'},
   // { path: 'movies', component: MoviesComponent, children: [
@@ -40,7 +42,9 @@ import { MatMenuModule } from '@angular/material/menu';
     HeaderComponent,
     ShowsComponent,
     MovieDetailsComponent,
-    ShowDetailsComponent
+    ShowDetailsComponent,
+    HomeComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
