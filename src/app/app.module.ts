@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { MoviesComponent } from './movies/movies.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +24,10 @@ import { ShowDetailsComponent } from './details/show-details/show-details.compon
 import { MatMenuModule } from '@angular/material/menu';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { CarouselModule } from 'primeng/carousel';
+import { SidebarModule } from 'primeng/sidebar';
+import { ButtonModule } from "primeng/button"; 
+import { ImageModule } from "primeng/image"; 
 //const routes: Routes = [
   // { path: '', redirectTo: '/movies', pathMatch: 'full'},
   // { path: 'movies', component: MoviesComponent, children: [
@@ -64,7 +67,11 @@ import { FooterComponent } from './shared/footer/footer.component';
     NgbModule,
     MatTabsModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    CarouselModule,
+    SidebarModule,
+    ImageModule,
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { MoviesComponent } from "./movies/movies.component";
 import { ShowsComponent } from "./shows/shows.component";
 import { MovieDetailsComponent } from "./details/movie-details/movie-details.component";
 import { ShowDetailsComponent } from "./details/show-details/show-details.component";
+import { HomeComponent } from "./home/home.component";
 
 const appRoutes: Routes = [
     {path: '', redirectTo: '/movies', pathMatch: 'full'},
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
     {path: 'movies/:id', component: MovieDetailsComponent },
     {path: 'shows', component: ShowsComponent},
     {path: 'shows/:id', component: ShowDetailsComponent},
+    {path: 'home', component: HomeComponent},
     // {path: 'movies', component: MoviesComponent, children: [
     //     { path: ':id', component: MovieDetailsComponent }
     // ]},

@@ -8,3 +8,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @import '../src/assets/scss/videos.scss';
 @import '../src/assets/scss/images.scss';
 @import '../src/assets/scss/variables.scss';
+@import '../src/assets/scss/listing.scss';
+@import '../src/assets/scss/bootstrap.scss';
+/* styles.css or your component's style file */
+
+
+/* styles.css or your component's style file */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
