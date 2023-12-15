@@ -18,7 +18,7 @@
                     [alt]="show.title ? show.title : show.name">
                     <img *ngIf="!show?.poster_path" src="/assets/images/cover_image.jpg"
                         [alt]="show.title ? show.title : show.name">   
-                    <h6>{{ show?.title }}</h6>
+                    <h6>{{ show?.name }}</h6>
                     <p class="rate"><i class="material-icons">star</i><span>{{show?.vote_average}}</span> /10</p>
                     <p class="year"><span>{{show?.release_date | date: 'yyyy'}}</span></p>
             </div>

@@ -7,7 +7,7 @@ import { ShowDetailsComponent } from "./details/show-details/show-details.compon
 import { HomeComponent } from "./home/home.component";
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: '/movies', pathMatch: 'full'},
+    {path: '', redirectTo: '/home', pathMatch: 'full'},
     {path: 'movies', component: MoviesComponent},
     {path: 'movies/:id', component: MovieDetailsComponent },
     {path: 'shows', component: ShowsComponent},
