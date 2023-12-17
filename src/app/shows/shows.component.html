@@ -15,7 +15,7 @@
                     </div>
                 </div>
                     <img *ngIf="show" src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{show?.poster_path}}"
-                    [alt]="show.title ? show.title : show.name">
+                    [alt]="show.title? show.title : show.name">
                     <img *ngIf="!show?.poster_path" src="/assets/images/cover_image.jpg"
                         [alt]="show.title ? show.title : show.name">   
                     <h6>{{ show?.name }}</h6>

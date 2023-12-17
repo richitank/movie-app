@@ -1,5 +1,10 @@
 @import "../scss/variables.scss";
 
+.listing-space {
+  margin: 40px 0px 40px;
+  //margin-left: 3rem;
+}
+
 .backdrop_ {
 
   .head {
@@ -13,7 +18,7 @@
   }
 
   .title {
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     letter-spacing: $letter-spacing;
 
     @media (min-width: $breakpoint-large) {

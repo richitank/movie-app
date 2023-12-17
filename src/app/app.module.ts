@@ -28,6 +28,7 @@ import { CarouselModule } from 'primeng/carousel';
 import { SidebarModule } from 'primeng/sidebar';
 import { ButtonModule } from "primeng/button"; 
 import { ImageModule } from "primeng/image"; 
+import {GalleriaModule} from "primeng/galleria";
 //const routes: Routes = [
   // { path: '', redirectTo: '/movies', pathMatch: 'full'},
   // { path: 'movies', component: MoviesComponent, children: [
@@ -71,7 +72,8 @@ import { ImageModule } from "primeng/image";
     CarouselModule,
     SidebarModule,
     ImageModule,
-    ButtonModule
+    ButtonModule,
+    GalleriaModule
   ],
   providers: [],
   bootstrap: [AppComponent]
