@@ -102,9 +102,9 @@
                     <div class="listing-space videos__status">
                         <div class="items">
                             <div class="item" *ngFor="let list of relatedvideo">
-                                <div  class="link">
+                                <div class="link">
                                     <div class="image lazyloaded">
-                                        <img class="lazyload"
+                                        <!-- <img class="lazyload"
                                             src="https://img.youtube.com/vi/{{list?.key}}/mqdefault.jpg">
                                         <div class="play__icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -115,7 +115,17 @@
                                                     stroke-linejoin="round" stroke-width="1.5"
                                                     d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" />
                                             </svg>
-                                        </div>
+                                        </div> -->
+                                        <!-- <img #thumbnail class="thumbnail"  [src]="getVideoThumbnailUrl(list.key)" alt="Video Thumbnail"> -->
+                                        <!-- <iframe #videoIframe width="100%" height="100%" [src]="getYouTubeEmbedUrl(list.key)" frameborder="0" allowfullscreen></iframe>
+                                        <button class="play-button" (click)="playVideo(thumbnail, videoIframe)">Play on YouTube</button> -->
+
+                                        <iframe width="560" height="315" [src]="getYouTubeEmbedUrl(list.key)" frameborder="0" allowfullscreen name="iframe_video1"></iframe>
+                                        <a href="" target="iframe_video1"><img src="https://img.youtube.com/vi/{{list?.key}}/mqdefault.jpg"/></a>
+                                        <!-- this works -->
+                                        <!-- <iframe width="100%" height="100%" [src]="getYouTubeEmbedUrl(list.key)" frameborder="0" allowfullscreen></iframe> -->
+                                        <!-- <button (click)="openYouTube(list.key)">Play on YouTube</button> -->
+                                        <button pButton type="button" icon="pi pi-play" (click)="openYouTube(list.key)" class="play__icon play-button"><i class="material-icons">play_arrow</i></button>
                                     </div>
                                     <div class="name">
                                         {{list?.name}}

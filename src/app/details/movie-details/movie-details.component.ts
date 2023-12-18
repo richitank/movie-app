@@ -6,6 +6,7 @@ import { PageEvent } from "@angular/material/paginator";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import { MovieVideo } from "./movieVideo.model";
 import { MovieImage } from "./movieImages.model";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class MovieDetailsComponent implements OnInit{
     backdrops: any;
     //router!: ActivatedRoute;
 
-    constructor (private movieService: MovieService, private route: ActivatedRoute, private router: Router) {}
+    constructor (private movieService: MovieService, private route: ActivatedRoute, private router: Router,private sanitizer: DomSanitizer) {}
 
 
     ngOnInit() {
@@ -57,4 +58,31 @@ export class MovieDetailsComponent implements OnInit{
         });
     }
 
+    // openDialogMovie(video): void {
+    //     this.video['url'] = this.sanitizer.bypassSecurityTrustResourceUrl(this.baseUrl + video.key + this.autoplay); 
+    //     this.dialog.open(AppMovieDialogComponent, {
+    //       height: '600px',
+    //       width: '900px',
+    //       data: { video: this.video}
+    //     });
+    //   }
+
+    getYouTubeEmbedUrl(videoId: string): SafeResourceUrl {
+        console.log("video id:" + videoId)
+        var url = `https://www.youtube.com/embed/${videoId}`;
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      }
+    
+      openYouTube(videoId: string): void {
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+      }
+
+      getVideoThumbnailUrl(videoId: string): string {
+        return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+      }
+
+      playVideo(thumbnail: HTMLImageElement, videoIframe: HTMLIFrameElement): void {
+        thumbnail.style.display = 'none'; // Hide the thumbnail
+        videoIframe.style.display = 'block'; // Show the video iframe
+      }
 }

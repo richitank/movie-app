@@ -5,6 +5,7 @@
 
 @import  "../../../assets/scss/variables.scss";
 @import "../../../assets/scss/images.scss";
+@import "../../../assets/scss/videos.scss";
 
 .lazyloaded .lazyload {
     opacity: none;
@@ -291,7 +292,7 @@
 .image-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 10px;
     justify-content: space-between;
   }
   
@@ -307,6 +308,18 @@
     width: auto;
     height: 100%;
     object-fit: cover;
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $secondary-color; /* Google blue color */
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
   }
   
 // .imagepics{
