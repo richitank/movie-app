@@ -1,5 +1,26 @@
 @import "../scss/variables.scss";
 
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.imagepics {
+  flex: calc(33.33% - 16px);
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.imagepics img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
+}
+
 .listing-space {
   margin: 40px 0px 40px;
   //margin-left: 3rem;

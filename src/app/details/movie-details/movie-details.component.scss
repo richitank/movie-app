@@ -289,26 +289,6 @@
   }
 }
 
-.image-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-between;
-  }
-  
-  .imagepics {
-    flex: calc(33.33% - 16px);
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 10px;
-    margin-left: 10px;
-  }
-  
-  .imagepics img {
-    width: auto;
-    height: 100%;
-    object-fit: cover;
-  }
 
   .play-button {
     position: absolute;
@@ -321,15 +301,7 @@
     border: none;
     cursor: pointer;
   }
-  
-// .imagepics{
-//     height: 100%;
-//     margin-left: 1%;
-//     margin-right: 1%;
-//     width: 100%;
-//     display: inline-block;
-//     position: relative;
-// }
+
 .image {
   display: inline-block;
   max-width: none;

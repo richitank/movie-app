@@ -19,6 +19,7 @@
                     <img *ngIf="!show?.poster_path" src="/assets/images/cover_image.jpg"
                         [alt]="show.title ? show.title : show.name">   
                     <h6>{{ show?.name }}</h6>
+                    <h5>{{ show?.name }}</h5>
                     <p class="rate"><i class="material-icons">star</i><span>{{show?.vote_average}}</span> /10</p>
                     <p class="year"><span>{{show?.release_date | date: 'yyyy'}}</span></p>
             </div>
@@ -40,7 +41,8 @@
                     [alt]="show.title ? show.title : show.name">
                     <img *ngIf="!show?.poster_path" src="/assets/images/cover_image.jpg"
                         [alt]="show.title ? show.title : show.name">   
-                    <h6>{{ show?.title }}</h6>
+                    <h2>{{ show?.title }}</h2>
+                    <h5>{{ show?.name }}</h5>
                     <p class="rate"><i class="material-icons">star</i><span>{{show?.vote_average}}</span> /10</p>
                     <p class="year"><span>{{show?.release_date | date: 'yyyy'}}</span></p>
             </div>

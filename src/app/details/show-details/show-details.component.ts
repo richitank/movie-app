@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router, Params } from "@angular/router";
 import { ShowService } from "src/app/services/show.service";
 import { ShowDetails } from "./show-details.model";
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 @Component({
     selector: 'app-show-details',
     templateUrl: './show-details.component.html',
@@ -18,7 +19,7 @@ export class ShowDetailsComponent implements OnInit {
     autoplay = '?rel=0;&autoplay=1&mute=0';
     backdrops: any;
     
-    constructor ( private showService: ShowService, private route: ActivatedRoute, private router: Router  ) { }
+    constructor ( private showService: ShowService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer  ) { }
     
     ngOnInit() {
         this.route.params.subscribe((params : Params) => {
@@ -51,4 +52,23 @@ export class ShowDetailsComponent implements OnInit {
             this.backdrops = res.backdrops;
         })
     }
+
+    getYouTubeEmbedUrl(videoId: string): SafeResourceUrl {
+        console.log("video id:" + videoId)
+        var url = `https://www.youtube.com/embed/${videoId}`;
+        return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+      }
+    
+      openYouTube(videoId: string): void {
+        window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+      }
+
+      getVideoThumbnailUrl(videoId: string): string {
+        return `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+      }
+
+      playVideo(thumbnail: HTMLImageElement, videoIframe: HTMLIFrameElement): void {
+        thumbnail.style.display = 'none'; // Hide the thumbnail
+        videoIframe.style.display = 'block'; // Show the video iframe
+      }
 }

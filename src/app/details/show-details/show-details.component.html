@@ -45,7 +45,7 @@
                                 <ul class="nolist">
                                     <li>
                                         <div class="label">
-                                            Released
+                                            Released:
                                         </div>
                                         <div class="value">
                                             {{ show?.first_air_date }}
@@ -53,7 +53,7 @@
                                     </li>
                                     <li>
                                         <div class="label">
-                                            Runtime
+                                            Runtime:
                                         </div>
                                         <div class="value">
                                             {{ show?.runtime  }}
@@ -61,7 +61,7 @@
                                     </li>
                                     <li *ngIf="show?.budget">
                                         <div class="label">
-                                            Budget
+                                            Budget:
                                         </div>
                                         <div class="value">
                                             ${{ show?.budget }}
@@ -78,15 +78,15 @@
 
                                     <li *ngIf="show?.genres.length">
                                         <div class="label">
-                                            Genre
+                                            Genre:
                                         </div>
                                         <div class="comma_" *ngFor="let genre of show?.genres">
-                                            {{ genre?.name }}
+                                            &nbsp;{{ genre?.name }}
                                         </div>
                                     </li>
                                     <li *ngIf="show?.status">
                                         <div class="label">
-                                            Status
+                                            Status:
                                         </div>
                                         <div class="value">
                                             {{show?.status}}
@@ -104,7 +104,10 @@
                             <div class="item" *ngFor="let list of relatedvideo">
                                 <div  class="link">
                                     <div class="image lazyloaded">
-                                        <img class="lazyload"
+                                        <iframe width="560" height="315" [src]="getYouTubeEmbedUrl(list.key)" frameborder="0" allowfullscreen name="iframe_video1"></iframe>
+                                        <a href="" target="iframe_video1"><img src="https://img.youtube.com/vi/{{list?.key}}/mqdefault.jpg"/></a>
+                                        <button pButton type="button" (click)="openYouTube(list.key)" class="play-button"><i class="material-icons">play_arrow</i></button>
+                                        <!-- <img class="lazyload"
                                             src="https://img.youtube.com/vi/{{list?.key}}/mqdefault.jpg">
                                         <div class="play__icon">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48"
@@ -115,7 +118,7 @@
                                                     stroke-linejoin="round" stroke-width="1.5"
                                                     d="M20.97 40.81L40.64 27.5 20.97 14.19v26.62z" />
                                             </svg>
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="name">
                                         {{list?.name}}
@@ -130,12 +133,12 @@
                 </mat-tab>
                 <mat-tab label="Photos">
                     <div class="listing-space backdrop_">
-                        <div class="head">
+                        <!-- <div class="head">
                             <h2 class="title">Backdrops</h2>
-                        </div>
+                        </div> -->
                         <div class="items">
-                            <div class="item backdrop_" *ngFor="let backdrop of backdrops | slice: 1:17">
-                                <div class="image">
+                            <div class="image-grid" *ngFor="let backdrop of backdrops | slice: 1:17">
+                                <div class="imagepics">
                                     <img class="lazyload" src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/{{ backdrop?.file_path }}">
                                 </div>
                             </div>

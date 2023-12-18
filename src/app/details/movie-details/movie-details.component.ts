@@ -25,7 +25,7 @@ export class MovieDetailsComponent implements OnInit{
     backdrops: any;
     //router!: ActivatedRoute;
 
-    constructor (private movieService: MovieService, private route: ActivatedRoute, private router: Router,private sanitizer: DomSanitizer) {}
+    constructor (private movieService: MovieService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {}
 
 
     ngOnInit() {

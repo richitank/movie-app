@@ -77,6 +77,8 @@ export class ShowsComponent implements OnInit, OnDestroy {
       this.totalResults = res.total_results;
       this.pageNumber = page;
       this.loader = false;
+      console.log("shows:"+ res.results[0].name);
+      console.log("totalRes:"+ this.totalResults);
     })
   }
 
@@ -89,8 +91,7 @@ export class ShowsComponent implements OnInit, OnDestroy {
       this.totalResults = res.total_results;
       this.pageNumber = page;
       this.loader = false;
-      console.log("shows:"+ res);
-      console.log("totalRes:"+ this.totalResults);
+     
     })
   }
 

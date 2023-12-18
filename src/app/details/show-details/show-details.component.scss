@@ -1,5 +1,77 @@
 @import  "../../../assets/scss/variables.scss";
 
+@import "../../../assets/scss/images.scss";
+@import "../../../assets/scss/videos.scss";
+
+.overview {
+  max-width: 1000px;
+  margin-left: 3rem;
+  //margin-bottom: 3rem;
+  font-size: 1.0rem;
+  font-family: $base-font-family;
+  color: $base-font-color; 
+  @media (min-width: $breakpoint-large) {
+    //font-size: 0.6rem;
+  }
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $secondary-color; /* Google blue color */
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+}
+
+
+.stats {
+  margin-bottom: 3rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+  font-size: 1.0rem;
+  color: $base-font-color;
+  font-family: $base-font-family;
+
+  @media (min-width: $breakpoint-large) {
+   // font-size: 1.6rem;
+  }
+
+  ul {
+    @media (min-width: $breakpoint-medium) {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  li {
+    display: flex;
+    padding: 0.2rem 0;
+
+    @media (min-width: $breakpoint-medium) {
+      width: 50%;
+    }
+
+    @media (min-width: $breakpoint-xlarge) {
+      width: 100%;
+    }
+  }
+
+  a {
+    color: $primary-color;
+    text-decoration: underline;
+  }
+}
+
+
+.value {
+  flex: 2;
+  margin-left: 10px;
+}
+
 .lazyloaded .lazyload {
     opacity: none;
   }
